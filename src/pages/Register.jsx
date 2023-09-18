@@ -39,12 +39,6 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-// Vérifier que les mots de passe correspondent
-if (userData.password !== userData.confirmPassword) {
-  swal("Erreur", "La confirmation du mot de passe ne correspond pas au mot de passe.", "error");
-  return; // Arrêtez la soumission du formulaire
-}
-
     try {
       const options = {
         method: "POST",
