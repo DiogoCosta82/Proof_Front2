@@ -1,0 +1,44 @@
+.card {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  gap: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: warning;
+}
+
+a:hover {
+  text-decoration: none;
+  color: brown;
+}
+
+.footer {
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+}
+
+body {
+  background-image: url("../img/Back.svg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container {
+  margin-top: 7vh;
+}
