@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import swal from "sweetalert";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import { FiEye, FiEyeOff } from "react-icons/fi"; // Importez les icônes des yeux
 import "../components/style/register.css";
 
 function Register() {
@@ -13,7 +14,11 @@ function Register() {
     enterprise: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,45 +28,50 @@ function Register() {
     }));
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+// Vérifier que les mots de passe correspondent
+if (userData.password !== userData.confirmPassword) {
+  swal("Erreur", "La confirmation du mot de passe ne correspond pas au mot de passe.", "error");
+  return; // Arrêtez la soumission du formulaire
+}
+
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/register", {
+      const options = {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData),
-      });
+      };
 
-      if (response.ok) {
-        const data = await response.json();
-        sessionStorage.setItem(
-          "token",
-          JSON.stringify(data.authorisation.token)
-        );
-        sessionStorage.setItem("id", JSON.stringify(data.user.id));
-        sessionStorage.setItem("type", JSON.stringify(data.user.type_user));
-        sessionStorage.setItem(
-          "entreprise",
-          JSON.stringify(data.user.entreprise)
-        );
-        sessionStorage.setItem("email", JSON.stringify(data.user.email));
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/register",
+        options
+      );
+      console.log(response);
 
-        swal("Inscription réussie !", "success");
-        navigate("/login");
+      const data = await response.json();
+
+      if (data.status === "success") {
+        swal("Registration successful!", "success");
+
+        navigate("/");
       } else {
-        const errorData = await response.json();
-        swal("Erreur d'inscription", errorData.message, "error");
+        swal("L'enregistrement n'a pas réussi!", data.message, "error");
       }
     } catch (error) {
-      console.error("Erreur lors de l'enregistrement :", error);
-      swal(
-        "Erreur",
-        "Une erreur s'est produite lors de l'inscription",
-        "error"
-      );
+      swal("Error", "An error occurred during registration", "error");
     }
   };
 
@@ -97,7 +107,9 @@ function Register() {
                   value={userData.type_user}
                   onChange={handleChange}
                 >
-                  <option value="">Sélection du profil</option>
+                  <option value="Selection du profil">
+                    Sélection du profil
+                  </option>
                   <option value="Admin">Administrateur</option>
                   <option value="User">Utilisateur</option>
                 </select>
@@ -121,14 +133,42 @@ function Register() {
                 />
               </div>
               <div className="form-group">
-                <input
-                  type="password"
-                  name="password"
-                  value={userData.password}
-                  onChange={handleChange}
-                  className="form-control"
-                  placeholder="Mot de Passe"
-                />
+                <div className="input-group">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={userData.password}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Mot de Passe"
+                  />
+                  <span
+                    className="input-group-text"
+                    onClick={toggleShowPassword}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {showPassword ? <FiEyeOff /> : <FiEye />}
+                  </span>
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="input-group">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    value={userData.confirmPassword}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Confirmez le Mot de Passe"
+                  />
+                  <span
+                    className="input-group-text"
+                    onClick={toggleShowConfirmPassword}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+                  </span>
+                </div>
               </div>
               <button
                 className="btn btn-warning border text-white fw-bold"
