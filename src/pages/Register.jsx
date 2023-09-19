@@ -1,5 +1,5 @@
 import { useState } from "react";
-import swal from "sweetalert";
+import swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi"; // Importez les icônes des yeux
@@ -14,7 +14,7 @@ function Register() {
     enterprise: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmPassword: ""
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -56,18 +56,26 @@ function Register() {
       console.log(response);
 
       const data = await response.json();
-
+      console.log(data)
       if (data.status === "success") {
-        swal("Registration successful!", "success");
+        swal.fire("Inscription réussie !", "Nouvel utilisateur créé","success");
 
         navigate("/");
       } else {
-        swal("L'enregistrement n'a pas réussi!", data.message, "error");
+        swal.fire("L'enregistrement n'a pas réussi!", data.message, "error");
       }
     } catch (error) {
-      swal("Error", "An error occurred during registration", "error");
+      if (error.response) {
+        // Le serveur a répondu avec un code d'erreur HTTP
+        swal.fire("Erreur", "Une erreur s'est produite lors de l'enregistrement", "error");
+      } else {
+        // Une erreur s'est produite lors de la requête
+        swal.fire("Erreur", "Une erreur s'est produite lors de la requête", "error");
+      }
     }
+    
   };
+
 
   return (
     <div className="container">

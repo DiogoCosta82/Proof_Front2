@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+import swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import login from "../Components/img/login.png";
 import "../Components/style/login.css";
@@ -31,26 +31,25 @@ function Login() {
         sessionStorage.setItem("token", data.access_token);
         sessionStorage.setItem("id", data.user.id);
         sessionStorage.setItem("email", data.user.email);
-        sessionStorage.setItem("type", data.user.type);
+        sessionStorage.setItem("type_user", data.user.type_user);
 
-        swal("Bienvenue ! Vous êtes connecté !", "success");
+        swal.fire("Bienvenue !", "Vous êtes connecté !", "success");
         navigate("/TableauBord");
       } else if (response.status === 401) {
-        swal(
+        swal.fire(
           "Échec de la connexion!",
           "Confirmez l'e-mail et/ou le mot de passe",
           "error"
         );
       } else {
-        swal(
+        swal.fire(
           "Erreur de connexion!",
           "Une erreur s'est produite lors de la connexion",
           "error"
         );
       }
     } catch (error) {
-      console.error("Erreur lors de la connexion :", error);
-      swal("Erreur", "Une erreur s'est produite lors de la connexion", "error");
+      swal.fire("Erreur", "Une erreur s'est produite lors de la connexion", "error");
     }
   }
 
