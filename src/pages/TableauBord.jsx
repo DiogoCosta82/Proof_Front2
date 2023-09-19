@@ -1,84 +1,87 @@
-import Header from "../models/ModelsHeader";
-import Footer from "../models/ModelsFooter";
-import { Card } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import React, { useState } from 'react';
 
 function TableauBord() {
-  const [ressources, setRessources] = useState({});
-  const [warehouse, setWarehouses] = useState([]);
-  const [ships, setShips] = useState({});
-  useEffect(() => {
-    getWarehouses().then((result) => setWarehouses(result));
-    getRessources().then((result) => setRessources(result));
-    getShips().then((ships) => setShips(ships));
-  }, []);
+  const [critere1Open, setCritere1Open] = useState(false);
+  const [indicateur1Open, setIndicateur1Open] = useState(false);
+  const [indicateur2Open, setIndicateur2Open] = useState(false);
+  const [indicateur3Open, setIndicateur3Open] = useState(false);
+
   return (
-    <div className="d-flex justify-content-center align-items-center vh-50">
-      {" "}
-      <div className="container m-5">
-        <Header />
+    <div>
+      <h1>Tableau de Bord</h1>
 
-        <div className="row m-3">
-          <div className="col-md-12 mb-12">
-            <Card className="text-center">
-              <Card.Header className="py-0">
-                <h1 className="orbitron">Your Resources:</h1>
-              </Card.Header>
-              <Card.Body>
-                <ViewRessources ressources={ressources} />
-              </Card.Body>
-            </Card>
-          </div>
-        </div>
-
-        <div className="row m-3">
-          <div className="col-md-6 mb-3">
-            <Card className="text-center">
-              <Card.Header className="py-0">
-                <h1 className="orbitron">Your ships:</h1>
-              </Card.Header>
-              <Card.Body>
-                <Ships type={"fighter"} ships={ships} />
-                <Ships type={"frigate"} ships={ships} />
-                <Ships type={"cruiser"} ships={ships} />
-                <Ships type={"destroyer"} ships={ships} />
-              </Card.Body>
-            </Card>
-          </div>
-          <div className="col-md-6 mb-3">
-            <Card className="text-center px-0 pt-2 pb-1">
-              <h1 className="orbitron">
-                Warehouse :{" "}
-                <span>
-                  <ViewWarehouse warehouse={warehouse} />
-                </span>
-              </h1>
-            </Card>
-          </div>
-        </div>
-
-        <div className="row m-3">
-          <div className="col-md-12 mb-3">
-            <Card.Body
-              className="py-0 opacity-1"
-              style={{
-                backgroundImage: 'url("/src/components/img/radar.gif")',
-                backgroundSize: "cover",
-                backgroundPosition: "center center",
-                backgroundRepeat: "no-repeat",
-                opacity: 0.7,
-              }}
+      <div className="accordion">
+        {/* Critère 1 */}
+        <div className="accordion-item">
+          <h2 className="accordion-header">
+            <button
+              className={`accordion-button ${critere1Open ? 'active' : ''}`}
+              onClick={() => setCritere1Open(!critere1Open)}
             >
-              <Card.Header className="py-0">
-                <h1 className="orbitron">You are here:</h1>
-              </Card.Header>
-              <Card.Body>
-                <MapUser />
-              </Card.Body>
-            </Card.Body>
-          </div>
+              Critère 1 - Les conditions d’information du public sur les prestations proposées, les délais pour y accéder et les résultats obtenus
+            </button>
+          </h2>
+          {critere1Open && (
+            <div className="accordion-collapse collapse show">
+              <div className="accordion-body">
+                {/* Indicateur 1 */}
+                <div>
+                  <h3>Indicateur 1 - INDICATEUR COMMUN D’APPRECIATION</h3>
+                  <p>Le prestataire diffuse une information accessible au public, détaillée et vérifiable sur les prestations proposées : prérequis, objectifs, durée, modalités et délais d’accès, tarifs, contacts, méthodes mobilisées et modalités d’évaluation, accessibilité aux personnes handicapées.</p>
+                  <button onClick={() => setIndicateur1Open(!indicateur1Open)}>Commentaires</button>
+                  <button>Non concerné</button>
+                  <button>Valider</button>
+                  {indicateur1Open && (
+                    <div>
+                      <label>ELÉMENTS DE PREUVE:</label>
+                      <input type="text" />
+                      <label>OBLIGATIONS SPÉCIFIQUES:</label>
+                      <input type="text" />
+                      <label>NON-CONFORMITÉ:</label>
+                      <input type="text" />
+                    </div>
+                  )}
+                </div>
+                {/* Indicateur 2 */}
+                <div>
+                  <h3>Indicateur 2 - INDICATEUR COMMUN D’APPRECIATION</h3>
+                  <p>Le prestataire diffuse des indicateurs de résultats adaptés à la nature des prestations mises en œuvre et des publics accueillis.</p>
+                  <button onClick={() => setIndicateur2Open(!indicateur2Open)}>Commentaires</button>
+                  <button>Non concerné</button>
+                  <button>Valider</button>
+                  {indicateur2Open && (
+                    <div>
+                      <label>ELÉMENTS DE PREUVE:</label>
+                      <input type="text" />
+                      <label>OBLIGATIONS SPÉCIFIQUES:</label>
+                      <input type="text" />
+                      <label>NON-CONFORMITÉ:</label>
+                      <input type="text" />
+                    </div>
+                  )}
+                </div>
+                {/* Indicateur 3 */}
+                <div>
+                  <h3>Indicateur 3 - INDICATEUR SPECIFIQUE D’APPRECIATION (OF, CFA, VAE)</h3>
+                  <p>Lorsque le prestataire met en œuvre des prestations conduisant à une certification professionnelle, il informe sur les taux d’obtention des certifications préparées, les possibilités de valider un/ou des blocs de compétences, ainsi que sur les équivalences, passerelles, suites de parcours et les débouchés.</p>
+                  <button onClick={() => setIndicateur3Open(!indicateur3Open)}>Commentaires</button>
+                  <button>Non concerné</button>
+                  <button>Valider</button>
+                  {indicateur3Open && (
+                    <div>
+                      <label>ELÉMENTS DE PREUVE:</label>
+                      <input type="text" />
+                      <label>OBLIGATIONS SPÉCIFIQUES:</label>
+                      <input type="text" />
+                      <label>NON-CONFORMITÉ:</label>
+                      <input type="text" />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-        <Footer />
       </div>
     </div>
   );
