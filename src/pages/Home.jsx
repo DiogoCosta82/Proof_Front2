@@ -2,6 +2,7 @@ import Footer from "../models/ModelsFooter";
 import "../Components/style/home.css";
 import fleche from "../Components/img/fleche.png";
 import fond from "../Components/img/fond.png";
+import logo from "../Components/img/logo.png";
 import React from "react";
 
 const Home = () => {
@@ -16,21 +17,24 @@ const Home = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="d-flex flex-column justify-content-start align-items-start">
-            <h1 className="display-4">Proof agence</h1>
+          <div className="d-flex flex-column justify-content-center align-items-center ">
+            <img src={logo} className="logo" alt="logo" />
+            <h1 className="display-4">Agence</h1>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center flex-grow-1">
-            <p>Votre agence d'accompagnement Qualiopi</p>
+            <h2>Votre agence d'accompagnement Qualiopi</h2>
           </div>
         </div>
 
         <div className="col-md-6 bg-light text-center p-5 d-flex flex-column justify-content-center align-items-center h-100">
           <div className="d-flex flex-column justify-content-start align-items-start">
-            <h4 className="display-4">Prêt pour créer votre dossier ?</h4>
+            <h4 className="display-4">Prêt à vous lancer ? </h4>
           </div>
           <br />
           <div className="d-flex flex-row align-items-center">
-            <p style={{ margin: "0", marginRight: "10px" }}>Commencer</p>
+            <p style={{ fontSize: "20px", margin: "0", marginRight: "10px" }}>
+              Commencer
+            </p>
             <a href="/login">
               <img
                 src={fleche}

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
-import login from "../Components/img/login.png";
-import "../Components/style/login.css";
-import "../Components/style/home.css";
+import login from "../Components/img/login.jpg";
 import Footer from "../models/ModelsFooter";
+import "../Components/style/login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -17,8 +16,8 @@ function Login() {
       const response = await fetch("http://127.0.0.1:8000/api/login", {
         method: "POST",
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: email,
@@ -28,7 +27,8 @@ function Login() {
       console.log(response);
       if (response.status === 200) {
         const data = await response.json();
-        sessionStorage.setItem("token", data.access_token);
+        sessionStorage.setItem("token", data.token);
+        console.log(data.token);
         sessionStorage.setItem("id", data.user.id);
         sessionStorage.setItem("email", data.user.email);
         sessionStorage.setItem("type_user", data.user.type_user);
@@ -49,20 +49,24 @@ function Login() {
         );
       }
     } catch (error) {
-      swal.fire("Erreur", "Une erreur s'est produite lors de la connexion", "error");
+      swal.fire(
+        "Erreur",
+        "Une erreur s'est produite lors de la connexion",
+        "error"
+      );
     }
   }
 
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <img src={login} className="card-img-top mx-auto" alt="Login" />
+        <div className="col-md-7">
+          <div className="card_2">
             <div className="card-body">
               <h5 className="card-title text-center text-white">
-                Connexion au Compte
+                Connexion Utilisateur
               </h5>
+              <img src={login} className="card-img-top mx-auto" alt="Login" />
               <div className="form-group">
                 <input
                   value={email}
@@ -81,17 +85,17 @@ function Login() {
                 />
                 <br />
                 <strong>
-                  <span
-                    className="linkForget font-weight-bolder font-size-medium text-danger text-decoration-none"
+                  <a
+                    className="linkForget font-weight-bolder font-size-medium text-decoration-none"
                     onClick={() => navigate("/forget-password")}
                     style={{ cursor: "pointer" }}
                   >
                     Mot de passe oublié?
-                  </span>
+                  </a>
                 </strong>
               </div>
               <button
-                className="btn btn-warning border fw-bold"
+                className="btn btn-outline-warning fw-bold"
                 onClick={handleSubmit}
               >
                 Connexion

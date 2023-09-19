@@ -1,10 +1,9 @@
-.card {
-  display: flex;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.1);
+.card_2 {
+  background-color: rgb(16 13 13 / 60%);
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  gap: 10px;
+  margin-top: 20% !important;
 }
 
 .card-body {
@@ -16,12 +15,12 @@
 
 a {
   text-decoration: none;
-  color: warning;
+  color: red;
 }
 
 a:hover {
   text-decoration: none;
-  color: brown;
+  color: rgb(204, 207, 0);
 }
 
 .footer {
@@ -37,8 +36,4 @@ body {
   background-image: url("../img/Back.svg");
   background-size: cover;
   background-attachment: fixed;
-}
-
-.container {
-  margin-top: 7vh;
 }

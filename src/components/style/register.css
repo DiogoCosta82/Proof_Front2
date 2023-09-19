@@ -1,23 +1,13 @@
-.btn-primary {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.form-control {
+.card {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: rgba(253, 253, 254, 0.867);
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
+  margin: 0 auto;
+  background-color: rgb(16 13 13 / 60%);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  gap: 10px;
+  margin-top: 10%;
 }
 
 .card-img,
@@ -25,7 +15,6 @@
 .card-img-top {
   width: 31%;
   margin-left: 32%;
-
   justify-content: center;
   align-items: center;
 }
