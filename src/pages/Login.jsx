@@ -34,7 +34,7 @@ function Login() {
         sessionStorage.setItem("type_user", data.user.type_user);
 
         swal.fire("Bienvenue !", "Vous êtes connecté !", "success");
-        navigate("/TableauBord");
+        navigate("/tableau-bord");
       } else if (response.status === 401) {
         swal.fire(
           "Échec de la connexion!",
