@@ -1,0 +1,79 @@
+.criteria-content {
+  display: flex;
+  align-items: center;
+}
+
+.left-column {
+  flex: 3;
+  text-align: center;
+}
+
+.right-column {
+  flex: 1;
+  text-align: left;
+
+  margin: 0 2% 0 2%;
+}
+.container {
+  margin-top: 2%;
+}
+
+/* Ajoutez de l'espace entre les boutons */
+.button-group {
+  display: flex;
+  gap: 10px; /* Ajoutez de l'espace entre les boutons */
+  margin-top: 10px; /* Ajoutez de l'espace en haut des boutons */
+}
+
+/* Ajoutez de l'espace entre les indicateurs */
+.indicator {
+  margin-top: 20px; /* Ajoutez de l'espace entre les indicateurs */
+}
+
+/* Ajoutez de l'espace en bas de la div qui contient les indicateurs */
+.accordion-body {
+  margin-bottom: 20px; /* Ajoutez de l'espace en bas de la div accordion-body */
+}
+
+.custom-card {
+  border: 1px solid #ccc;
+  margin-bottom: 20px; /* Espacement entre les cartes */
+  background-color: #d7e2f7; /* Arrière-plan de la carte */
+  padding: 10px;
+  border-radius: 5px; /* Coins arrondis */
+}
+
+.custom-card-header {
+  background-color: #b6b6b1;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.custom-card-title {
+  margin: 0;
+}
+
+.custom-card-body {
+  padding: 10px;
+}
+
+.custom-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.custom-input {
+  width: 100%;
+  height: 6em; /* Change this value to adjust the input height */
+  resize: none;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
