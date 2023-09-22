@@ -6,22 +6,18 @@
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  gap: 10px;
-  margin-top: 5%;
+  margin-top: 7%;
 }
 
 .card-img,
 .card-img-bottom,
 .card-img-top {
-  width: 31%;
+  width: 20%;
   margin-left: 32%;
   justify-content: center;
   align-items: center;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+.container2 {
+  margin: 0 auto;
 }
