@@ -7,7 +7,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   gap: 10px;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .card-img,
@@ -17,4 +17,11 @@
   margin-left: 32%;
   justify-content: center;
   align-items: center;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }

@@ -1,6 +1,14 @@
 .accordion-button {
-  height: 13vh; /* Définir la hauteur du header à 40 pixels */
-  /* Autres styles de mise en forme */
+  height: 13vh;
+}
+
+.accordion {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.accordion-item {
+  border-radius: 10px;
 }
 
 .left-column {
@@ -18,7 +26,8 @@
   margin-bottom: 3%;
 }
 .container {
-  margin-top: 2%;
+  margin-top: 3%;
+  border-radius: 5px;
 }
 
 .button-group {
@@ -27,20 +36,18 @@
   margin-top: 10px;
 }
 
-.indicator {
-  margin-top: 20px;
-}
-
 .accordion-body {
   margin-bottom: 20px;
 }
 
 .custom-card {
+  margin: 0 auto;
   border: 1px solid #ccc;
-  margin-bottom: 20px;
+  margin-bottom: 70px;
   background-color: #d7e2f7;
   padding: 10px;
   border-radius: 5px;
+  width: 95%;
 }
 
 .custom-card-header {
@@ -64,9 +71,23 @@
   margin-top: 10px;
 }
 
-.custom-input {
+.text_indicateur {
   width: 100%;
-  height: 6em;
+  height: 20vh;
+  resize: none;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.lien_indicateur {
+  width: 100%;
+  height: 4vh;
   resize: none;
   border: 1px solid #ccc;
   padding: 5px;
@@ -100,4 +121,27 @@
 
 .commentaires-container ul li {
   margin-bottom: 10px;
+}
+
+.custom-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+  position: relative; /* Ajout pour positionner le bouton dans l'input */
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inside-input-button {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.lien_indicateur {
+  width: calc(100% - 40px); /* Ajustez la largeur de l'input */
 }
