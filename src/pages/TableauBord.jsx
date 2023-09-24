@@ -11,8 +11,6 @@ function TableauBord() {
   const [critere3, setCritere3] = useState(false);
   const [critere4, setCritere4] = useState(false);
 
-
-
   const commentairesIndicateur1 = [];
   const commentairesIndicateur2 = [];
   const commentairesIndicateur3 = [];
@@ -163,8 +161,9 @@ function TableauBord() {
                   <h4>
                     CRITÈRE 3
                     <h5>
-                      L’adaptation aux publics bénéficiaires des prestations et des modalités
-                      d’accueil, d’accompagnement, de suivi et d’évaluation mises en œuvre
+                      L'adaptation aux publics bénéficiaires des prestations et
+                      des modalités d'accueil, d'accompagnement, de suivi et
+                      d'évaluation mises en œuvre
                     </h5>
                   </h4>
                 </button>
@@ -179,7 +178,7 @@ function TableauBord() {
                   description="Le prestataire informe les publics
                   bénéficiaires des conditions de
                   déroulement de la prestation."
-                  niveauAttendu="Niveau Attendu: Les modalités d’accueil et les conditions
+                  niveauAttendu="Niveau Attendu: Les modalités d'accueil et les conditions
                   de déroulement de la prestation sont
                   formalisées et diffusées."
                   commentaires={commentairesIndicateur9}
@@ -189,9 +188,9 @@ function TableauBord() {
                 <Indicateur
                   titre="Indicateur 10 | Indicateur Commun d'Appréciation"
                   description="Le prestataire met en œuvre et adapte
-                  la prestation, l’accompagnement et le
+                  la prestation, l'accompagnement et le
                   suivi aux publics bénéficiaires.."
-                  niveauAttendu=" Niveau Attendu: La prestation est adaptée aux situations et
+                  niveauAttendu="Niveau Attendu: La prestation est adaptée aux situations et
                   profils des bénéficiaires : contenus (outils
                   et méthodes), accompagnement, suivi
                   (durées, emplois du temps, adaptation des
@@ -201,12 +200,12 @@ function TableauBord() {
                 {/* Indicateur 11 */}
                 <Indicateur
                   titre="Indicateur 11 - Indicateur Commun d'Appréciation"
-                  description="Le prestataire évalue l’atteinte par les
+                  description="Le prestataire évalue l'atteinte par les
                   publics bénéficiaires des objectifs de
                   la prestation."
-                  niveauAttendu="Niveau Attendu: Démontrer qu’un processus d’évaluation
+                  niveauAttendu="Niveau Attendu: Démontrer qu'un processus d'évaluation
                   existe, est formalisé et mis en œuvre. Il
-                  permet d’apprécier l’atteinte des objectifs."
+                  permet d'apprécier l'atteinte des objectifs."
                   commentaires={commentairesIndicateur11}
                 />
                 {/* Indicateur 12 */}
@@ -214,7 +213,7 @@ function TableauBord() {
                   titre="Indicateur 12 - Indicateur Commun d'Appréciation"
                   description="Le prestataire décrit et met en œuvre
                   les mesures pour favoriser
-                  l’engagement des bénéficiaires et prévenir
+                  l'engagement des bénéficiaires et prévenir
                   les ruptures de parcours."
                   niveauAttendu="Niveau Attendu: Démontrer que des mesures formalisées
                   existent et sont mises en œuvre."
@@ -224,35 +223,36 @@ function TableauBord() {
                 <Indicateur
                   titre="Indicateur 13 - Indicateur Spécifique d'appréciation (OF, CFA)s"
                   description="Pour les formations en alternance,
-                  le prestataire, en lien avec l’entreprise,
-                  anticipe avec l’apprenant les missions
+                  le prestataire, en lien avec l'entreprise,
+                  anticipe avec l'apprenant les missions
                   confiées, à court, moyen et long terme, et
                   assure la coordination
                   et la progressivité des apprentissages
                   réalisés en centre de formation et en
                   entreprise."
-                  niveauAttendu="Niveau Attendu: Démontrer qu’un processus formalisé
-                  d’articulation des apprentissages en centre
+                  niveauAttendu="Niveau Attendu: Démontrer qu'un processus formalisé
+                  d'articulation des apprentissages en centre
                   et en entreprise est mis en œuvre."
                   commentaires={commentairesIndicateur13}
                 />
                 {/* Indicateur 14*/}
                 <Indicateur
                   titre="Indicateur 14 -  Indicateur Spécifique d'appréciation (CFA)"
-                  description=" Le prestataire met en œuvre un
+                  description="Le prestataire met en œuvre un
                   accompagnement socio-professionnel,
-                  éducatif et relatif à l’exercice de la
+                  éducatif et relatif à l'exercice de la
                   citoyenneté."
-                  niveauAttendu="Niveau Attendu: Démontrer que l’accompagnement de
-                  l’apprenant est formalisé et mis en œuvre
+                  niveauAttendu="Niveau Attendu: Démontrer que l'accompagnement de
+                  l'apprenant est formalisé et mis en œuvre
                   par la mise en place de projets spécifiques."
                   commentaires={commentairesIndicateur14}
-                />{/* Indicateur 15*/}
+                />
+                {/* Indicateur 15*/}
                 <Indicateur
                   titre="Indicateur 15 - Indicateur Spécifique d'appréciation (CFA)"
-                  description=" Le prestataire informe les apprentis
+                  description="Le prestataire informe les apprentis
                   de leurs droits et devoirs en tant
-                  qu’apprentis et salariés ainsi que des règles
+                  qu'apprentis et salariés ainsi que des règles
                   applicables en matière de santé et de
                   sécurité en milieu professionnel."
                   niveauAttendu="Niveau Attendu: Démontrer que les apprentis sont informés
@@ -260,20 +260,21 @@ function TableauBord() {
                   et sur les règles applicables en matière de
                   santé et de sécurité en milieu professionnel."
                   commentaires={commentairesIndicateur15}
-                />{/* Indicateur 16*/}
+                />
+                {/* Indicateur 16*/}
                 <Indicateur
                   titre="Indicateur 16 - Indicateur Spécifique d'appréciation (OF, CFA,VAE)"
                   description="Lorsque le prestataire met en œuvre
                   des formations conduisant à une
-                  certification professionnelle, il s’assure
+                  certification professionnelle, il s'assure
                   que les conditions de présentation des
                   bénéficiaires à la certification respectent
-                  les exigences formelles de l’autorité de
+                  les exigences formelles de l'autorité de
                   certification."
                   niveauAttendu="Niveau Attendu: Le prestataire respecte les exigences
-                  formelles de l’autorité de certification
-                  lorsqu’il présente des candidats à la
-                  certification qu’il propose."
+                  formelles de l'autorité de certification
+                  lorsqu'il présente des candidats à la
+                  certification qu'il propose."
                   commentaires={commentairesIndicateur16}
                 />
               </div>
@@ -291,8 +292,8 @@ function TableauBord() {
                   <h4>
                     CRITÈRE 4
                     <h5>
-                      L’adéquation des moyens pédagogiques, techniques et d’encadrement
-                      aux prestations mises en œuvre
+                      L'adéquation des moyens pédagogiques, techniques et
+                      d'encadrement aux prestations mises en œuvre
                     </h5>
                   </h4>
                 </button>
@@ -305,9 +306,9 @@ function TableauBord() {
                 <Indicateur
                   titre="Indicateur 17 | Indicateur Commun d'Appréciation"
                   description="Le prestataire met à disposition ou
-                  s’assure de la mise à disposition des
+                  s'assure de la mise à disposition des
                   moyens humains et techniques adaptés
-                  et d’un environnement approprié
+                  et d'un environnement approprié
                   (conditions, locaux, équipements, plateaux
                   techniques…)."
                   niveauAttendu="Démontrer que les locaux, les
@@ -322,7 +323,7 @@ function TableauBord() {
                   les différents intervenants internes et/ou
                   externes (pédagogiques, administratifs,
                   logistiques, commerciaux…)."
-                  niveauAttendu="Niveau Attendu:Démontrer l’existence d’une coordination
+                  niveauAttendu="Niveau Attendu:Démontrer l'existence d'une coordination
                   des fonctions nécessaires à la prestation."
                   commentaires={commentairesIndicateur18}
                 />
@@ -344,17 +345,24 @@ function TableauBord() {
                 {/* Indicateur 20 */}
                 <Indicateur
                   titre="Indicateur 20 - Indicateur Spécifique d'appréciation (CFA)"
-                  description="Le prestataire dispose d’un personnel
-                  dédié à l’appui à la mobilité nationale
-                  et internationale, d’un référent handicap
-                  et d’un conseil de perfectionnement."
-                  niveauAttendu="Niveau Attendu: Le prestataire présente :
-                  
-                  - la liste des membres du conseil de
-                  perfectionnement, le dernier compterendu et/ou procès-verbal ;
-                  - la liste des personnes dédiées à la mobilité
-                  (nationale et internationale) ;
-                  - le nom et le contact du référent handicap."
+                  description="Le prestataire dispose d'un personnel
+                  dédié à l'appui à la mobilité nationale
+                  et internationale, d'un référent handicap
+                  et d'un conseil de perfectionnement."
+                  niveauAttendu={
+                    <>
+                      Niveau Attendu: Le prestataire présente :
+                      <div>
+                        - la liste des membres du conseil de perfectionnement,
+                        le dernier compterendu et/ou procès-verbal ;
+                      </div>
+                      <div>
+                        - la liste des personnes dédiées à la mobilité
+                        (nationale et internationale) ;
+                      </div>
+                      <div>- le nom et le contact du référent handicap.</div>
+                    </>
+                  }
                   commentaires={commentairesIndicateur20}
                 />
               </div>
