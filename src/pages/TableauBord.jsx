@@ -6,7 +6,6 @@ import Indicateur from "../models/Indicateur";
 
 function TableauBord() {
   const [critere1, setCritere1] = useState(false);
-  // const [critere1, setCritere1] = useState(false); // Suppression car il y a une déclaration en double.
   const [critere2, setCritere2] = useState(false);
   const [critere3, setCritere3] = useState(false);
   const [critere4, setCritere4] = useState(false);
