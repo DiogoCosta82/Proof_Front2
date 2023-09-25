@@ -28,7 +28,7 @@
 }
 
 .accordion {
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
   border-radius: 20px;
   margin-bottom: 20px;
@@ -172,4 +172,28 @@
 
 .lien_indicateur {
   width: calc(100% - 40px);
+}
+
+.colonne-gauche {
+  width: 10%;
+  float: left;
+  margin-top: 80px;
+  text-align: center;
+}
+
+.colonne-droite {
+  width: 90%;
+  float: left;
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .accordion-button {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+  }
+  .accordion-button h5 {
+    font-size: 14px;
+  }
 }

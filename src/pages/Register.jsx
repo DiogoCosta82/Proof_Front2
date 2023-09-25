@@ -65,7 +65,7 @@ function Register() {
           "success"
         );
 
-        navigate("/");
+        navigate("/login");
       } else {
         swal.fire("L'enregistrement n'a pas réussi!", data.message, "error");
       }
