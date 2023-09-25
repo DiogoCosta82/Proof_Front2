@@ -1,7 +1,7 @@
-// Indicateur.jsx
+// Indicateur.js
 import React, { useState } from "react";
 
-function Indicateur({ titre, description, niveauAttendu, commentaires = [] }) {
+function Indicateur({ titre, description, niveauAttendu, commentaires }) {
   const [inputFields, setInputFields] = useState([{ id: 0, value: "" }]);
   const [showCommentaires, setShowCommentaires] = useState(false);
 
