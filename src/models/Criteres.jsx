@@ -145,7 +145,7 @@ const critereData = [
         description:
           "Le prestataire met à disposition ou s'assure de la mise à disposition des moyens humains et techniques adaptés et d'un environnement approprié (conditions, locaux, équipements, plateaux techniques…).",
         niveauAttendu:
-          "Démontrer que les locaux, les équipements, les moyens humains sont en adéquation avec la ou les prestation(s).",
+          "Niveau Attendu: Démontrer que les locaux, les équipements, les moyens humains sont en adéquation avec la ou les prestation(s).",
       },
       {
         id: 18,
@@ -153,7 +153,7 @@ const critereData = [
         description:
           "Le prestataire mobilise et coordonne les différents intervenants internes et/ou externes (pédagogiques, administratifs, logistiques, commerciaux…).",
         niveauAttendu:
-          "Niveau Attendu:Démontrer l'existence d'une coordination des fonctions nécessaires à la prestation.",
+          "Niveau Attendu: Démontrer l'existence d'une coordination des fonctions nécessaires à la prestation.",
       },
       {
         id: 19,
@@ -170,6 +170,127 @@ const critereData = [
           "Le prestataire dispose d'un personnel dédié à l'appui à la mobilité nationale et internationale, d'un référent handicap et d'un conseil de perfectionnement.",
         niveauAttendu:
           "Niveau Attendu: Le prestataire présente :\n - la liste des membres du conseil de perfectionnement, le dernier compte-rendu et/ou procès-verbal ;\n - la liste des personnes dédiées à la mobilité (nationale et internationale) ;\n - le nom et le contact du référent handicap.",
+      },
+    ],
+  },
+  {
+    id: 5,
+    titre: "CRITÈRE 5",
+    description:
+      "La qualification et le développement des connaissances et compétences des personnels chargés de mettre en œuvre les prestations",
+    indicateurs: [
+      {
+        id: 21,
+        titre: "Indicateur 21 | Indicateur Commun d'Appréciation",
+        description:
+          "Le prestataire détermine, mobilise et évalue les compétences desndifférents intervenants internes et/ou externes, adaptées aux prestations.",
+        niveauAttendu:
+          "Démontrer que les compétences requises pour réaliser les prestations ont été définies en amont et sont adaptées aux prestations. La maîtrise de ces compétences fait par ailleurs l’objet d’une évaluation par le prestataire.",
+      },
+      {
+        id: 22,
+        titre: "Indicateur 22 | Indicateur Commun d'Appréciation",
+        description:
+          "Le prestataire entretient et développe les compétences de ses salariés, adaptées aux prestations qu’il délivre.",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer l’existence d’un plan de développement des compétences pour l’ensemble de son personnel.",
+      },
+    ],
+  },
+  {
+    id: 6,
+    titre: "CRITÈRE 6",
+    description:
+      "L’inscription et l’investissement du prestataire dans son environnement professionnel",
+    indicateurs: [
+      {
+        id: 23,
+        titre: "Indicateur 23 | Indicateur Commun d'Appréciation",
+        description:
+          "Le prestataire réalise une veille légale et réglementaire sur le champ de la formation professionnelle et en exploite les enseignements..",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer la mise en place d’une veille légale et réglementaire et son exploitation.",
+      },
+      {
+        id: 24,
+        titre: "Indicateur 24 | Indicateur Commun d'Appréciation",
+        description:
+          "Le prestataire réalise une veille sur les évolutions des compétences, des métiers et des emplois dans ses secteurs  d’intervention et en exploite les enseignements.",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer la mise en place d’une veille sur les thèmes de l’indicateur et son impact éventuel sur les prestations.",
+      },
+      {
+        id: 25,
+        titre: "Indicateur 25 | Indicateur Commun d'Appréciation",
+        description:
+          "Le prestataire réalise une veille sur les innovations pédagogiques et technologiques permettant une évolution  de ses prestations et en exploite les enseignements.",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer la mise en place d’une veille sur les thèmes de l’indicateur et son impact éventuel sur les prestations.",
+      },
+      {
+        id: 26,
+        titre: "Indicateur 26 | Indicateur Commun d'Appréciation",
+        description:
+          "Le prestataire mobilise les expertises, outils et réseaux nécessaires pour accueillir, accompagner/former ou orienter les publics en situation de handicap",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer la mise en place d’un réseau de partenaires/experts/acteurs du champ du handicap, mobilisable par les personnels et dans le cas d’accueil de personnes en situation de handicap, préciser les mesures spécifiques mises en œuvre.",
+      },
+      {
+        id: 27,
+        titre: "Indicateur 27 | Indicateur Commun d'Appréciation",
+        description:
+          "Lorsque le prestataire fait appel à la sous-traitance ou au portage salarial, il s’assure du respect de la conformité au présent référentiel.",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer les dispositions mises en place pour vérifier le respect de la conformité au présent référentiel par le sous-traitant ou le salarié porté.",
+      },
+      {
+        id: 28,
+        titre: "Indicateur 28 | Indicateur Spécifique d'Appréciation (OF, CFA)",
+        description:
+          "Lorsque les prestations dispensées au bénéficiaire comprennent des périodes de formation en situation de travail, le prestataire mobilise son réseau de partenaires socio-économiques pour co-construire l’ingénierie de formation et favoriser l’accueil en entreprise.",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer l’existence d’un réseau de partenaires socio-économiques mobilisé tout au long de la prestation.",
+      },
+      {
+        id: 29,
+        titre: "Indicateur 29 | Indicateur Spécifique d'Appréciation (CFA)",
+        description:
+          "Le prestataire développe des actions qui concourent à l’insertion professionnelle ou la poursuite d’étude par la voie de l’apprentissage ou par toute autre voie permettant de développer leurs connaissances et leurs compétences.",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer l’existence d’actions qui concourent à l’insertion professionnelle ou la poursuite d’études.",
+      },
+    ],
+  },
+  {
+    id: 7,
+    titre: "CRITÈRE 1",
+    description:
+      "Le recueil et la prise en compte des appréciations et des réclamations formulées par les parties prenantes aux prestations délivrées",
+    indicateurs: [
+      {
+        id: 30,
+        titre: "Indicateur 30 | Indicateur Commun d'Appréciation",
+        description:
+          "Le prestataire recueille les appréciations des parties prenantes: bénéficiaires, financeurs, équipes pédagogiques et entreprises concernées..",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer la mise en place d’un système de collecte des appréciations à une fréquence pertinente, incluant des dispositifs de relance et permettant une libre expression.",
+      },
+      {
+        id: 31,
+        titre: "Indicateur 31 | Indicateur Commun d'Appréciation",
+        description:
+          " Le prestataire met en œuvre des modalités de traitement des difficultés rencontrées par les parties prenantes, des réclamations exprimées par ces dernières,des aléas survenus en cours de prestation..",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer la mise en place de modalités de traitement des aléas, difficultés et réclamations.",
+      },
+      {
+        id: 32,
+        titre:
+          "Indicateur 32 - Indicateur Commun d'Appréciation",
+        description:
+          "Le prestataire met en œuvre des mesures d’amélioration à partir de l’analyse des appréciations et des réclamations.",
+        niveauAttendu:
+          "Niveau Attendu: Démontrer la mise en place d’une démarche d’amélioration continue.",
       },
     ],
   },
@@ -192,9 +313,8 @@ function Critere() {
             <div className="criteria-content">
               <h2 className="accordion-header text-center">
                 <button
-                  className={`accordion-button ${
-                    openAccordion === critere.id ? "active" : ""
-                  }`}
+                  className={`accordion-button ${openAccordion === critere.id ? "active" : ""
+                    }`}
                   onClick={() => toggleAccordion(critere.id)}
                 >
                   <h5>
