@@ -1,14 +1,42 @@
 .accordion-button {
-  height: 13vh;
+  height: 12vh;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  text-align: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.accordion-button.active,
+.accordion-button:hover {
+  background: #9ef17d;
+}
+
+.accordion-content.active {
+  display: block;
+}
+
+.content-closed {
+  display: none;
+}
+
+.content-open {
+  display: block;
 }
 
 .accordion {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .accordion-item {
   border-radius: 10px;
+  background-color: #f1f1f1;
 }
 
 .left-column {
@@ -128,7 +156,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin-top: 10px;
-  position: relative; /* Ajout pour positionner le bouton dans l'input */
+  position: relative;
 }
 
 .input-field {
@@ -143,5 +171,5 @@
 }
 
 .lien_indicateur {
-  width: calc(100% - 40px); /* Ajustez la largeur de l'input */
+  width: calc(100% - 40px);
 }
