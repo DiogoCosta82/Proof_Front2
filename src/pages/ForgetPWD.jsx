@@ -22,11 +22,7 @@ function ForgetPWD() {
       const data = await response.json();
       setStatus(data.status);
     } catch (error) {
-      swal(
-        "Error",
-        "Something went wrong 💥 please try again later 💫",
-        "error"
-      );
+      swal("Error", "Something went wrong please try again later 💫", "error");
       setStatus("try again later :");
     }
   }
