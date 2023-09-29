@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+import swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
-import login from "../Components/img/login.png";
-import "../Components/style/login.css";
-import "../Components/style/home.css";
+import login from "../Components/img/login.jpg";
 import Footer from "../models/ModelsFooter";
+import "../Components/style/login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -17,6 +16,7 @@ function Login() {
       const response = await fetch("http://127.0.0.1:8000/api/login", {
         method: "POST",
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -27,42 +27,46 @@ function Login() {
       console.log(response);
       if (response.status === 200) {
         const data = await response.json();
-        sessionStorage.setItem("token", data.access_token);
+        sessionStorage.setItem("token", data.token);
+        console.log(data.token);
         sessionStorage.setItem("id", data.user.id);
         sessionStorage.setItem("email", data.user.email);
-        sessionStorage.setItem("type", data.user.type);
+        sessionStorage.setItem("type_user", data.user.type_user);
 
-        swal("Bienvenue ! Vous êtes connecté !", "success");
-        navigate("/TableauBord");
+        swal.fire("Bienvenue !", "Vous êtes connecté !", "success");
+        navigate("/tableau-bord");
       } else if (response.status === 401) {
-        swal(
+        swal.fire(
           "Échec de la connexion!",
           "Confirmez l'e-mail et/ou le mot de passe",
           "error"
         );
       } else {
-        swal(
+        swal.fire(
           "Erreur de connexion!",
           "Une erreur s'est produite lors de la connexion",
           "error"
         );
       }
     } catch (error) {
-      console.error("Erreur lors de la connexion :", error);
-      swal("Erreur", "Une erreur s'est produite lors de la connexion", "error");
+      swal.fire(
+        "Erreur",
+        "Une erreur s'est produite lors de la connexion",
+        "error"
+      );
     }
   }
 
   return (
-    <div className="container">
+    <div className="container3">
       <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <img src={login} className="card-img-top mx-auto" alt="Login" />
+        <div className="col-md-7">
+          <div className="card_2">
             <div className="card-body">
               <h5 className="card-title text-center text-white">
-                Connexion au Compte
+                Connexion Utilisateur
               </h5>
+              <img src={login} className="card-img-top mx-auto" alt="Login" />
               <div className="form-group">
                 <input
                   value={email}
@@ -81,17 +85,17 @@ function Login() {
                 />
                 <br />
                 <strong>
-                  <span
-                    className="linkForget font-weight-bolder font-size-medium text-danger text-decoration-none"
+                  <a
+                    className="linkForget font-weight-bolder font-size-medium text-decoration-none"
                     onClick={() => navigate("/forget-password")}
                     style={{ cursor: "pointer" }}
                   >
                     Mot de passe oublié?
-                  </span>
+                  </a>
                 </strong>
               </div>
               <button
-                className="btn btn-warning border fw-bold"
+                className="btn btn-outline-warning fw-bold"
                 onClick={handleSubmit}
               >
                 Connexion

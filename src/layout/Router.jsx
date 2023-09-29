@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     element: <Disconnect />,
   },
   {
-    path: "/TableauBord",
+    path: "/tableau-bord",
     element: <TableauBord />,
   },
   {
