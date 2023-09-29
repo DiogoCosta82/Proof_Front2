@@ -7,19 +7,9 @@ function Header(props) {
   const [connected, setConnected] = useState(false);
   const [disconnected, setDisconnected] = useState(true);
   const [user, setUser] = useState();
-  const UserMenu = (
-    <Image
-      src={avatar}
-      alt="UserName profile image"
-      roundedCircle
-      style={{ width: "40px" }}
-    />
-  );
 
   useEffect(() => {
     setUser(JSON.parse(sessionStorage.getItem("user")));
-    setAvatar(JSON.parse(sessionStorage.getItem("avatar")));
-    setPlanet(JSON.parse(sessionStorage.getItem("planet")));
     if (user) {
       setConnected(true);
       setDisconnected(false);
@@ -43,9 +33,9 @@ function Header(props) {
             {disconnected && (
               <Navbar.Brand>
                 <img
-                  src="src\assets\logo\logo2.png"
+                  src="src\components\img\logo.png"
                   style={{
-                    width: "100px",
+                    width: "50px",
                   }}
                 />
               </Navbar.Brand>
@@ -53,9 +43,9 @@ function Header(props) {
             {connected && (
               <Navbar.Brand>
                 <img
-                  src="src\assets\logo\logo2.png"
+                  src="src\components\img\logo.png"
                   style={{
-                    width: "100px",
+                    width: "50px",
                   }}
                 />
                 | Welcome <span className="colorBisque">{user}</span>!
@@ -71,49 +61,15 @@ function Header(props) {
                   navbarScroll
                 >
                   <Navbar.Brand>
-                    <Link to="/"> 🏚️ Home</Link>
+                    <Link to="/"> Home</Link>
                   </Navbar.Brand>
                   <NavDropdown
                     title="Your Empire"
                     id="navbarScrollingDropdown1"
                   >
                     <NavDropdown.Item>
-                      <Link to="/yourempire">
-                        <span className="orbitron4">
-                          {" "}
-                          🛕 {planet} &apos; system
-                        </span>
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item>
-                      <Link to="/buildyourempire">
-                        <span className="orbitron4">⚒️ Build Your Empire</span>
-                      </Link>
-                    </NavDropdown.Item>
-
-                    <NavDropdown.Item>
                       <Link to="/extendyourempire">
                         <span className="orbitron4">🔭 Extend Your Empire</span>
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item>
-                      <Link to="/battlehistory">
-                        <span className="orbitron5">📜 Battle History </span>
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/battle">
-                        <span className="colorRed orbitron3">
-                          ⚔️ <strong>Battle!</strong>
-                        </span>
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item>
-                      <Link to="/ranking">
-                        <span className="orbitron6">🏆 World Ranking </span>
                       </Link>
                     </NavDropdown.Item>
                   </NavDropdown>
@@ -137,26 +93,25 @@ function Header(props) {
                     id="navbarScrollingDropdown2"
                   >
                     <NavDropdown.Item>
-                      <Link to="/editprofile">🔍 Edit your profile</Link>
+                      <Link to="/editprofile">Edit profile</Link>
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Divider />
                     <NavDropdown.Item>
                       <Link to="/disconnect">
                         <span className="colorRed">
-                          <strong>🪧 Logout</strong>
+                          <strong>Logout</strong>
                         </span>
                       </Link>
                     </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
               )}
-
               {disconnected && (
                 <Navbar.Collapse>
                   <Nav.Link>
                     <Link to="/register">
-                      <span className="colorRed"> 📑 Register</span>
+                      <span className="colorRed">Register</span>
                     </Link>
                   </Nav.Link>
                 </Navbar.Collapse>
@@ -165,7 +120,7 @@ function Header(props) {
                 <Navbar.Collapse className="justify-content-end">
                   <Nav.Link>
                     <Link to="/login">
-                      <span className="colorBisque">🔗 Login</span>
+                      <span className="colorBisque">Login</span>
                     </Link>
                   </Nav.Link>
                 </Navbar.Collapse>

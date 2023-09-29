@@ -1,5 +1,5 @@
 import { Container, Navbar } from "react-bootstrap";
-import "../Components/style/login.css";
+// import "../Components/style/login.css";
 
 function Footer() {
   return (
