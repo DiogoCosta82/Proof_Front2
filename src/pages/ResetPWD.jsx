@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Header2 from "../models/ModelsHeader2";
-import Footer from "../models/ModelsFooter";
+import Header_User from "../models/Header_User";
+import Footer from "../models/Footer";
 import "../Components/style/home.css";
 import swal from "sweetalert";
 
@@ -47,7 +47,7 @@ const ResetPWD = () => {
 
   return (
     <div className="container-fluid">
-      <Header2 name="Reset Your Password" />
+      <Header_User name="Reset Your Password" />
       <div className="row mb-5 pt-2"></div>
       <div className="row justify-content-center mt-5">
         <div className="col-md-5">

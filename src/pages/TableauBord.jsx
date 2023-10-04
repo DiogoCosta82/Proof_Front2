@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../components/style/tbord.css";
 import Critere from "../models/Criteres";
-import Header from "../models/ModelsHeader";
+import Header_Admin from "../models/Header_Admin";
+import Header_User from "../models/Header_User";
+import Footer from "../models/Footer";
 
 function TableauBord({ critereData }) {
   const [dossierNumero, setDossierNumero] = useState(null);
   const [accordionsVisible, setAccordionsVisible] = useState(false);
+  const [typeUser, settypeUser] = useState(null);
 
+  useEffect(() => {
+    // Récupérer le user_type du sessionStorage
+    const type = sessionStorage.getItem("type_user");
+    settypeUser(type);
+  }, []);
   const createDossier = () => {
     // Générer un numéro de dossier aléatoire
     const randomNumero = Math.floor(Math.random() * 10000);
@@ -19,7 +27,8 @@ function TableauBord({ critereData }) {
 
   return (
     <div className="tableau-bord">
-      <Header />
+      {/* Afficher Header si user_Type est "admin", sinon Header2 */}
+      {typeUser === "admin" ? <Header_Admin /> : <Header_User />}
       <div className="colonne-gauche">
         {dossierNumero && (
           <div className="numero-dossier">
@@ -38,8 +47,10 @@ function TableauBord({ critereData }) {
       {accordionsVisible && (
         <div className="colonne-droite">
           <Critere critereData={critereData} />
+          <div style={{ height: "100px" }}></div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

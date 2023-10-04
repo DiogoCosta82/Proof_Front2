@@ -29,8 +29,8 @@ body {
 }
 
 .logo {
-  width: 50%;
-  margin: 0 auto;
+  margin-top: 30%;
+  width: 40%;
   justify-content: center;
   align-items: center;
 }

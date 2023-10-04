@@ -107,8 +107,8 @@ function Register() {
                   onChange={handleChange}
                 >
                   <option value="Selection du profil"></option>
-                  <option value="Admin">Administrateur</option>
-                  <option value="User">Utilisateur</option>
+                  <option value="admin">Administrateur</option>
+                  <option value="user">Utilisateur</option>
                 </select>
               </div>
               <div className="row">

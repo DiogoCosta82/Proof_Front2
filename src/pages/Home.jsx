@@ -1,4 +1,4 @@
-import Footer from "../models/ModelsFooter";
+import Footer from "../models/Footer";
 import "../Components/style/home.css";
 import fleche from "../Components/img/fleche.png";
 import fond from "../Components/img/fond.png";

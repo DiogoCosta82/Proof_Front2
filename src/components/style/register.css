@@ -21,3 +21,13 @@
 .container2 {
   margin: 0 auto;
 }
+
+.colorBisque {
+  color: red;
+  font-weight: bold;
+}
+
+.colorBisque2 {
+  color: rgb(93, 91, 224);
+  font-weight: bold;
+}

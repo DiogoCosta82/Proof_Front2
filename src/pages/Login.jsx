@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import login from "../Components/img/login.jpg";
-import Footer from "../models/ModelsFooter";
+import Footer from "../models/Footer";
 import "../Components/style/login.css";
 
 function Login() {
@@ -32,6 +32,7 @@ function Login() {
         sessionStorage.setItem("id", data.user.id);
         sessionStorage.setItem("email", data.user.email);
         sessionStorage.setItem("type_user", data.user.type_user);
+        sessionStorage.setItem("enterprise", data.user.enterprise);
 
         swal.fire("Bienvenue !", "Vous êtes connecté !", "success");
         navigate("/tableau-bord");
