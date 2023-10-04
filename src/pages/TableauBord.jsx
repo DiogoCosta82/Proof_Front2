@@ -1,57 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "../components/style/tbord.css";
 import Critere from "../models/Criteres";
-import Header from "../models/ModelsHeader";
+import Header_Admin from "../models/Header_Admin";
+import Header_User from "../models/Header_User";
+import Footer from "../models/Footer";
 
 function TableauBord({ critereData }) {
   const [dossierNumero, setDossierNumero] = useState(null);
   const [accordionsVisible, setAccordionsVisible] = useState(false);
-  const user = JSON.parse(sessionStorage.getItem("user"));
-  const token = sessionStorage.getItem("token");
+  const [typeUser, settypeUser] = useState(null);
 
   useEffect(() => {
-    // Vérifier si un dossier existe pour l'utilisateur actuel
-    fetch("http://127.0.0.1:8000/api/checkDossier", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.numero) {
-          setDossierNumero(data.numero);
-          setAccordionsVisible(true);
-        }
-      });
+    // Récupérer le user_type du sessionStorage
+    const type = sessionStorage.getItem("type_user");
+    settypeUser(type);
   }, []);
-
   const createDossier = () => {
+    // Générer un numéro de dossier aléatoire
     const randomNumero = Math.floor(Math.random() * 10000);
     const dossier = `proof-qual-${randomNumero}`;
 
-    // Envoyer le nouveau dossier au backend pour le sauvegarder
-    fetch("http://127.0.0.1:8000/api/createDossier", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ numero: dossier }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setDossierNumero(dossier);
-          setAccordionsVisible(true);
-        }
-      });
+    // Afficher le numéro de dossier et les accordions
+    setDossierNumero(dossier);
+    setAccordionsVisible(true);
   };
 
   return (
     <div className="tableau-bord">
-      <Header />
+      {/* Afficher Header si user_Type est "admin", sinon Header2 */}
+      {typeUser === "admin" ? <Header_Admin /> : <Header_User />}
       <div className="colonne-gauche">
         {dossierNumero && (
           <div className="numero-dossier">
@@ -66,11 +43,14 @@ function TableauBord({ critereData }) {
           </button>
         )}
       </div>
+
       {accordionsVisible && (
         <div className="colonne-droite">
           <Critere critereData={critereData} />
+          <div style={{ height: "100px" }}></div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

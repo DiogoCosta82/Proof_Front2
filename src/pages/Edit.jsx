@@ -1,6 +1,6 @@
 import { Card, Col, Form, Row } from "react-bootstrap";
-import Footer from "../models/ModelsFooter";
-import Header from "../models/ModelsHeader";
+import Footer from "../models/Footer";
+import Header_Admin from "../models/Header_Admin";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import swal from "sweetalert";
@@ -176,7 +176,7 @@ function EditProfil() {
 
   return (
     <div className="container-fluid">
-      <Header name="Edit Your Profile" />
+      <Header_Admin name="Edit Your Profile" />
       <div className="row mb-5 pt-2"></div>
       <div className="row wrap">
         <Card>
