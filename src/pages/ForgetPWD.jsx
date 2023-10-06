@@ -1,5 +1,8 @@
 import { useState } from "react";
 import swal from "sweetalert";
+import forgot from "../Components/img/forgot.png";
+import Header_User from "../models/Header_User";
+import Footer from "../models/Footer";
 
 function ForgetPWD() {
   const [email, setEmail] = useState("");
@@ -32,36 +35,44 @@ function ForgetPWD() {
   }
 
   return (
-    <div>
-      <div className="container">
-        <div className="row justify-content-center mt-5">
-          <div className="col-md-5">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Reset Password</h5>
-                <div className="form-group">
-                  <form onSubmit={handleSubmit}>
-                    <input
-                      value={email}
-                      required
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="form-control"
-                      placeholder="Enter your e-mail"
-                    />
-                    <button
-                      type="submit"
-                      className="btn btn-dark border border-warning mt-2"
-                    >
-                      Send me an e-mail{" "}
-                    </button>
-                    {status && <div>{status}</div>}
-                  </form>
-                </div>
+    <div className="container3">
+      <Header_User />
+      <div className="row justify-content-center">
+        <div className="col-md-7">
+          <div className="card_2">
+            <div className="card-body">
+              <h5 className="card-title text-center text-white">
+                Mot de Passe Oublié
+              </h5>
+              <img
+                src={forgot}
+                className="card-img-top mx-auto"
+                alt="Forgot Password"
+              />
+              <div className="form-group">
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Saisissez votre email"
+                    className="form-control"
+                  />
+                </form>
               </div>
+              <button
+                type="submit"
+                className="btn btn-outline-warning fw-bold mt-2"
+              >
+                Envoyez-moi un email
+              </button>
+              {status && <div className="mt-2 text-white">{status}</div>}
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
