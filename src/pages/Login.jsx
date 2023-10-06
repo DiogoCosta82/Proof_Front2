@@ -16,21 +16,15 @@ function Login() {
       const response = await fetch("http://127.0.0.1:8000/api/login", {
         method: "POST",
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
+        body: JSON.stringify({ email, password }),
       });
       console.log(response);
+
+      const data = await response.json();
       if (response.status === 200) {
-        const data = await response.json();
-        sessionStorage.setItem("token", data.token);
-        console.log(data.token);
-        sessionStorage.setItem("id", data.user.id);
-        sessionStorage.setItem("email", data.user.email);
+        sessionStorage.setItem("token", JSON.stringify(data.token));
         sessionStorage.setItem("type_user", data.user.type_user);
         sessionStorage.setItem("enterprise", data.user.enterprise);
 

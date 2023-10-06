@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../components/style/tbord.css";
 import Critere from "../models/Criteres";
 import Header_Admin from "../models/Header_Admin";
@@ -9,12 +10,20 @@ function TableauBord({ critereData }) {
   const [dossierNumero, setDossierNumero] = useState(null);
   const [accordionsVisible, setAccordionsVisible] = useState(false);
   const [typeUser, settypeUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // Vérifier si l'utilisateur est connecté
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+
     // Récupérer le user_type du sessionStorage
     const type = sessionStorage.getItem("type_user");
     settypeUser(type);
   }, []);
+
   const createDossier = () => {
     // Générer un numéro de dossier aléatoire
     const randomNumero = Math.floor(Math.random() * 10000);

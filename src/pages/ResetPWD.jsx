@@ -39,7 +39,7 @@ const ResetPWD = () => {
       console.error("Error:", response.status, errorText);
       swal(
         "Error",
-        "Something went wrong 💥 please try again later 💫",
+        "Quelque chose c'est mal passé, veuillez réessayer plus tard",
         "error"
       );
     }

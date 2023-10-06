@@ -3,33 +3,46 @@ import Swal from "sweetalert2";
 
 function Disconnect() {
   const navigate = useNavigate();
-
-  const token = JSON.parse(sessionStorage.getItem("token"));
-
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${token} `);
+  const token = sessionStorage.getItem("tokens");
 
   var requestOptions = {
     method: "POST",
-    headers: myHeaders,
-    redirect: "follow",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   };
 
   fetch("http://127.0.0.1:8000/api/logout", requestOptions)
     .then((response) => {
-      if (response.ok) {
-        navigate("/");
-        Swal.fire("Vous êtes déconnecté !", "success");
-        sessionStorage.clear();
+      console.log(response);
+      if (response.status === 200) {
+        return response.json();
       } else {
-        sessionStorage.clear();
+        throw new Error(`Failed to logout: ${response.statusText}`);
+      }
+    })
+    .then((data) => {
+      if (data.status === "success") {
+        Swal.fire("Succès", "Vous êtes déconnecté !", "success");
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("type_user");
+        sessionStorage.removeItem("enterprise");
         navigate("/");
+      } else {
+        Swal.fire(
+          "Erreur",
+          "Une erreur s'est produite lors de la déconnexion",
+          "error"
+        );
       }
     })
     .catch((error) => {
-      console.error(error);
-
-      Swal.fire("Erreur", "Une erreur inattendue s'est produite", "error");
+      Swal.fire(
+        "Erreur",
+        `Une erreur inattendue s'est produite: ${error}`,
+        "error"
+      );
     });
 }
 
