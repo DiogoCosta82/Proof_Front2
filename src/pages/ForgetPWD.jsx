@@ -23,7 +23,7 @@ function ForgetPWD() {
       );
 
       const data = await response.json();
-      setStatus(data.status);
+      setStatus(data.message);
     } catch (error) {
       swal(
         "Error",
@@ -59,15 +59,15 @@ function ForgetPWD() {
                     placeholder="Saisissez votre email"
                     className="form-control"
                   />
+                  <button
+                    type="submit"
+                    className="btn btn-outline-warning fw-bold mt-2"
+                  >
+                    Envoyez-moi un email
+                  </button>
+                  {status && <div className="mt-2 text-white">{status}</div>}
                 </form>
               </div>
-              <button
-                type="submit"
-                className="btn btn-outline-warning fw-bold mt-2"
-              >
-                Envoyez-moi un email
-              </button>
-              {status && <div className="mt-2 text-white">{status}</div>}
             </div>
           </div>
         </div>
