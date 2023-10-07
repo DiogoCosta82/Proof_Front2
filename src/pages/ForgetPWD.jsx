@@ -1,38 +1,42 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import forgot from "../Components/img/forgot.png";
 import Header_User from "../models/Header_User";
 import Footer from "../models/Footer";
 
-function ForgetPWD() {
+const ForgetPWD = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/api/forget-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: email }),
-        }
-      );
 
+    const response = await fetch(`http://127.0.0.1:8000/api/forget-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email }),
+    });
+
+    if (response.ok) {
       const data = await response.json();
       setStatus(data.message);
-    } catch (error) {
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+    } else {
+      const errorText = await response.text();
+      console.error("Error:", response.status, errorText);
       swal(
         "Error",
         "Quelque chose c'est mal passé, veuillez réessayer plus tard!",
         "error"
       );
-      setStatus("Veuillez réessayer plus tard!");
     }
-  }
+  };
 
   return (
     <div className="container3">
@@ -75,6 +79,6 @@ function ForgetPWD() {
       <Footer />
     </div>
   );
-}
+};
 
 export default ForgetPWD;

@@ -10,10 +10,10 @@ const ResetPWD = () => {
   const navigate = useNavigate();
   const path = useLocation().pathname;
   const token = path.split("/")[2];
-  console.log(token);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +33,10 @@ const ResetPWD = () => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("body", data);
-      navigate("/login");
+      setStatus(data.message);
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     } else {
       const errorText = await response.text();
       console.error("Error:", response.status, errorText);
@@ -87,9 +89,14 @@ const ResetPWD = () => {
                   className="form-control"
                 />
               </div>
-              <button type="submit" className="btn btn-outline-success fw-bold">
+              <button
+                type="submit"
+                className="btn btn-outline-success fw-bold"
+                onClick={handleSubmit}
+              >
                 Réinitialiser le mot de passe
               </button>
+              {status && <div className="mt-2 text-white">{status}</div>}
             </div>
           </div>
         </div>
