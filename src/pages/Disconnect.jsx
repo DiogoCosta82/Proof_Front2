@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 function Disconnect() {
   const navigate = useNavigate();
-  const token = sessionStorage.getItem("tokens");
+  const token = sessionStorage.getItem("token");
 
   var requestOptions = {
     method: "POST",
@@ -25,9 +25,8 @@ function Disconnect() {
     .then((data) => {
       if (data.status === "success") {
         Swal.fire("Succès", "Vous êtes déconnecté !", "success");
-        sessionStorage.removeItem("token");
-        sessionStorage.removeItem("type_user");
-        sessionStorage.removeItem("enterprise");
+        sessionStorage.clear;
+
         navigate("/");
       } else {
         Swal.fire(

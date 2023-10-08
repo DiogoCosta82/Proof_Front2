@@ -24,7 +24,9 @@ function Login() {
 
       const data = await response.json();
       if (response.status === 200) {
-        sessionStorage.setItem("token", JSON.stringify(data.token));
+        sessionStorage.setItem("token", data.token);
+        sessionStorage.setItem("user_id", data.user.id);
+        sessionStorage.setItem("firstname", data.user.firstname);
         sessionStorage.setItem("type_user", data.user.type_user);
         sessionStorage.setItem("enterprise", data.user.enterprise);
 

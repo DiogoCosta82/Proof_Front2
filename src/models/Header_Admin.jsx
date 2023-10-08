@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../components/style/tbord.css";
+import logo from "../Components/img/logo.png";
 
 function Header_Admin() {
   const [connected, setConnected] = useState(false);
   const [disconnected, setDisconnected] = useState(true);
-  const [enterprise, setEnterprise] = useState();
+  const [firstname, setfirstname] = useState();
 
   useEffect(() => {
-    setEnterprise(sessionStorage.getItem("enterprise"));
+    setfirstname(sessionStorage.getItem("firstname"));
     const token = sessionStorage.getItem("token");
 
     if (token) {
@@ -19,7 +20,7 @@ function Header_Admin() {
       setConnected(false);
       setDisconnected(true);
     }
-  }, [enterprise]);
+  }, [firstname]);
 
   return (
     <div className="row mb-5">
@@ -51,7 +52,7 @@ function Header_Admin() {
                     marginRight: "15px",
                   }}
                 />
-                | Bienvenue <span className="colorBisque2">{enterprise} </span>|
+                | Bienvenue <span className="colorBisque2">{firstname} </span>|
               </Navbar.Brand>
             )}
             <Navbar.Toggle aria-controls="navbarScroll" />
@@ -70,7 +71,7 @@ function Header_Admin() {
                       <Link to="/register">Créer Utilisateur</Link>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
-                      <Link to="/edit">Modifier profil</Link>
+                      <Link to="/editprofile">Modifier profil</Link>
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item>

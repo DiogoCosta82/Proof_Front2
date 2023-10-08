@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import forgot from "../Components/img/forgot.png";
-import Header_User from "../models/Header_User";
 import Footer from "../models/Footer";
 
 const ForgetPWD = () => {
@@ -40,7 +39,6 @@ const ForgetPWD = () => {
 
   return (
     <div className="container3">
-      <Header_User />
       <div className="row justify-content-center">
         <div className="col-md-7">
           <div className="card_2">

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Header_User from "../models/Header_User";
 import Footer from "../models/Footer";
 import "../Components/style/home.css";
 import swal from "sweetalert";
@@ -50,7 +49,6 @@ const ResetPWD = () => {
 
   return (
     <div className="container4">
-      <Header_User />
       <div className="row justify-content-center">
         <div className="col-md-7">
           <div className="card_2">
