@@ -7,6 +7,7 @@ import Disconnect from "../pages/Disconnect";
 import EditProfil from "../pages/Edit";
 import ResetPWD from "../pages/ResetPWD";
 import ForgetPWD from "../pages/ForgetPWD";
+import TableauBord_admin from "../pages/TableauBord_admin";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/tableau-bord",
     element: <TableauBord />,
+  },
+  {
+    path: "/tableau-bord-admin",
+    element: <TableauBord_admin />,
   },
   {
     path: "/editprofile",

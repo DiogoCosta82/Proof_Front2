@@ -31,7 +31,11 @@ function Login() {
         sessionStorage.setItem("enterprise", data.user.enterprise);
 
         swal.fire("Bienvenue !", "Vous êtes connecté !", "success");
-        navigate("/tableau-bord");
+        if (data.user.type_user === "user") {
+          navigate("/tableau-bord");
+        } else if (data.user.type_user === "admin") {
+          navigate("/tableau-bord-admin");
+        }
       } else if (response.status === 401) {
         swal.fire(
           "Échec de la connexion!",
