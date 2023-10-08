@@ -71,7 +71,7 @@ function Header_User() {
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item>
-                      <Link to="/logout">Déconnecter</Link>
+                      <Link to="/">Déconnecter</Link>
                     </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
