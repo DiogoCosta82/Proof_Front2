@@ -39,20 +39,6 @@
   background-color: #f1f1f1;
 }
 
-.left-column {
-  float: left;
-  width: 70%;
-  height: 100%;
-  margin-top: 1%;
-}
-
-.right-column {
-  float: left;
-  width: 30%;
-  background-color: #f0f0f0;
-  padding: 10px;
-  margin-bottom: 3%;
-}
 .container {
   margin-top: 3%;
   border-radius: 5px;
@@ -185,6 +171,7 @@
   width: 90%;
   float: left;
   margin-top: 80px;
+  margin-bottom: 100px;
 }
 
 @media screen and (max-width: 768px) {

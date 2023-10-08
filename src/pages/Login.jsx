@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import login from "../Components/img/login.jpg";
-import Footer from "../models/ModelsFooter";
+import Footer from "../models/Footer";
 import "../Components/style/login.css";
 
 function Login() {
@@ -16,22 +16,19 @@ function Login() {
       const response = await fetch("http://127.0.0.1:8000/api/login", {
         method: "POST",
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
+        body: JSON.stringify({ email, password }),
       });
       console.log(response);
+
+      const data = await response.json();
       if (response.status === 200) {
-        const data = await response.json();
         sessionStorage.setItem("token", data.token);
-        console.log(data.token);
-        sessionStorage.setItem("id", data.user.id);
-        sessionStorage.setItem("email", data.user.email);
+        sessionStorage.setItem("user_id", data.user.id);
+        sessionStorage.setItem("firstname", data.user.firstname);
         sessionStorage.setItem("type_user", data.user.type_user);
+        sessionStorage.setItem("enterprise", data.user.enterprise);
 
         swal.fire("Bienvenue !", "Vous êtes connecté !", "success");
         navigate("/tableau-bord");
