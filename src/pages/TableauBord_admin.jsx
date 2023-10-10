@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/style/tbord.css";
-import Critere from "../models/Criteres";
+import critereData from "../models/critereData.json";
 import Header_Admin from "../models/Header_Admin";
-import Header_User from "../models/Header_User";
 import Footer from "../models/Footer";
 
-function TableauBord({ critereData }) {
-  const [dossierNumero, setDossierNumero] = useState(null);
-  const [accordionsVisible, setAccordionsVisible] = useState(false);
-  const [typeUser, settypeUser] = useState(null);
+function TableauBord_admin() {
+  const [dossiers, setDossiers] = useState([]);
+  const [typeUser, setTypeUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,47 +19,80 @@ function TableauBord({ critereData }) {
 
     // Récupérer le user_type du sessionStorage
     const type = sessionStorage.getItem("type_user");
-    settypeUser(type);
-  }, []);
+    setTypeUser(type);
 
-  const createDossier = () => {
-    // Générer un numéro de dossier aléatoire
-    const randomNumero = Math.floor(Math.random() * 10000);
-    const dossier = `proof-qual-${randomNumero}`;
+    // Charger tous les dossiers depuis l'API
+    const loadDossiers = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/getDossiers", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-    // Afficher le numéro de dossier et les accordions
-    setDossierNumero(dossier);
-    setAccordionsVisible(true);
-  };
+        if (response.ok) {
+          const data = await response.json();
+          setDossiers(data); // Définir la liste des dossiers
+        } else {
+          console.error("Erreur lors du chargement des dossiers");
+        }
+      } catch (error) {
+        console.error("Erreur lors du chargement des dossiers", error);
+      }
+    };
+
+    if (typeUser === "admin") {
+      loadDossiers(); // Charger les dossiers pour les administrateurs
+    }
+  }, [typeUser]);
 
   return (
     <div className="tableau-bord">
       {/* Afficher Header si user_Type est "admin", sinon Header2 */}
-      {typeUser === "admin" ? <Header_Admin /> : <Header_User />}
-      <div className="colonne-gauche">
-        {dossierNumero && (
-          <div className="numero-dossier">
-            <h3>
-              Dossier : <h5>{dossierNumero}</h5>
-            </h3>
-          </div>
-        )}
-        {!dossierNumero && (
-          <button className="btn btn-success fw-bold" onClick={createDossier}>
-            Créer Dossier
-          </button>
-        )}
-      </div>
+      {typeUser === "admin" ? <Header_Admin /> : null}
 
-      {accordionsVisible && (
+      {typeUser === "admin" && (
         <div className="colonne-droite">
-          <Critere critereData={critereData} />
+          {dossiers.map((dossier) => (
+            <DossierAccordion
+              key={dossier.id}
+              dossier={dossier}
+              critere={critereData}
+            />
+          ))}
           <div style={{ height: "100px" }}></div>
         </div>
       )}
+
       <Footer />
     </div>
   );
 }
 
-export default TableauBord;
+function DossierAccordion({ dossier }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="dossier-accordion">
+      <div
+        className={`accordion-header ${open ? "open" : ""}`}
+        onClick={() => setOpen(!open)}
+      >
+        <h3>
+          Enterprise: {dossier.enterprise} - Numéro de Dossier:{" "}
+          {dossier.n_dossier}
+        </h3>
+      </div>
+      {open && (
+        <div className="criteres">
+          {critereData.map((critere, index) => (
+            <div key={index}>{critere}</div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default TableauBord_admin;
