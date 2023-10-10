@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Header_User from "../models/Header_User";
 import Footer from "../models/Footer";
 import "../Components/style/home.css";
 import swal from "sweetalert";
+import reset from "../Components/img/reset.jpg";
 
 const ResetPWD = () => {
   const navigate = useNavigate();
   const path = useLocation().pathname;
   const token = path.split("/")[2];
-  console.log(token);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,63 +32,69 @@ const ResetPWD = () => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("body", data);
-      navigate("/login");
+      setStatus(data.message);
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     } else {
       const errorText = await response.text();
       console.error("Error:", response.status, errorText);
       swal(
         "Error",
-        "Something went wrong 💥 please try again later 💫",
+        "Quelque chose c'est mal passé, veuillez réessayer plus tard",
         "error"
       );
     }
   };
 
   return (
-    <div className="container-fluid">
-      <Header_User name="Reset Your Password" />
-      <div className="row mb-5 pt-2"></div>
-      <div className="row justify-content-center mt-5">
-        <div className="col-md-5">
-          <div className="card">
+    <div className="container4">
+      <div className="row justify-content-center">
+        <div className="col-md-7">
+          <div className="card_2">
             <div className="card-body">
-              {status && <div>{status}</div>}
-              <form onSubmit={handleSubmit}>
+              <h5 className="card-title text-center text-white">
+                Réinitialiser votre mot de passe
+              </h5>
+              <img src={reset} className="card-img-top mx-auto" alt="Reset" />
+              <div className="form-group">
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="form-control m-2"
-                  name="email"
+                  placeholder="Saisissez votre email"
+                  className="form-control"
                 />
+              </div>
+              <div className="form-group">
                 <input
                   type="password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your new password"
-                  className="form-control m-2"
-                  name="password"
+                  placeholder="Saisissez votre nouveau mot de passe"
+                  className="form-control"
                 />
+              </div>
+              <div className="form-group">
                 <input
                   type="password"
                   required
                   value={passwordConfirmation}
                   onChange={(e) => setPasswordConfirmation(e.target.value)}
-                  placeholder="Confirm your new password"
-                  className="form-control m-2"
-                  name="passwordConfirmation"
+                  placeholder="Confirmez votre nouveau mot de passe"
+                  className="form-control"
                 />
-                <button
-                  type="submit"
-                  className="btn btn-dark border border-warning mt-2"
-                >
-                  Reset Password
-                </button>
-              </form>
+              </div>
+              <button
+                type="submit"
+                className="btn btn-outline-success fw-bold"
+                onClick={handleSubmit}
+              >
+                Réinitialiser le mot de passe
+              </button>
+              {status && <div className="mt-2 text-white">{status}</div>}
             </div>
           </div>
         </div>
