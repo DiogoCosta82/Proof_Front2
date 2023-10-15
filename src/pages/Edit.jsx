@@ -1,26 +1,30 @@
 import { Card, Col, Form, Row } from "react-bootstrap";
 import Footer from "../models/Footer";
 import Header_Admin from "../models/Header_Admin";
+import Header_User from "../models/Header_User";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { FiEye, FiEyeOff } from "react-icons/fi"; // Importez les icônes des yeux
 
 function EditProfil() {
   const navigate = useNavigate();
 
-  const firstname = JSON.parse(sessionStorage.getItem("firstname"));
-  const lastname = JSON.parse(sessionStorage.getItem("lastname"));
-  const email = JSON.parse(sessionStorage.getItem("email"));
-  const enterprise = JSON.parse(sessionStorage.getItem("enterprise"));
-  const token = JSON.parse(sessionStorage.getItem("token"));
-  const userId = JSON.parse(sessionStorage.getItem("user_id")); // Ajoutez ceci pour récupérer l'ID de l'utilisateur
+  const firstname = sessionStorage.getItem("firstname");
+  const lastname = sessionStorage.getItem("lastname");
+  const email = sessionStorage.getItem("email");
+  const enterprise = sessionStorage.getItem("enterprise");
+  const token = sessionStorage.getItem("token");
+  const type_user = sessionStorage.getItem("type_user");
+  const userId = sessionStorage.getItem("user_id"); // Ajoutez ceci pour récupérer l'ID de l'utilisateur
 
   const [userData, setUserData] = useState({
     firstname: firstname,
     lastname: lastname,
     email: email,
-    password: "", // Vous pouvez ajouter le champ du mot de passe si nécessaire
+    password: "",
+    type_user: "",
     enterprise: enterprise,
   });
 
@@ -84,6 +88,17 @@ function EditProfil() {
       console.error("Error during Edition:", error);
       swal("Error", "Une erreur s'est produite lors de l'édition", "error");
     }
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   const handleDelete = () => {
@@ -160,78 +175,87 @@ function EditProfil() {
   }
 
   return (
-    <div className="container-fluid">
-      <Header_Admin name="Edit Your Profile" />
-      <div className="row mb-5 pt-2"></div>
-      <div className="row wrap">
-        <Card>
-          <Form className="colorBisque">
-            <Row className="mb-3">
-              <Form.Group as={Col}>
-                <Form.Label>Firstname:</Form.Label>
-                <Form.Control
-                  name="firstname"
-                  defaultValue={firstname}
-                  onChange={handleChange}
-                  type="text"
-                />
-              </Form.Group>
+    <div className="container2">
+      {type_user === "admin" ? <Header_Admin /> : <Header_User />}
+      <div className="row mb-5 pt-2">
+        <div className="row justify-content-center">
+          <div className="col-md-9">
+            <div className="card p-3 mb-4 text-white">
+              <h5 className="card-title text-center">
+                Edition du profil utilisateur
+              </h5>
+              {/* ... (Vous pouvez ajouter une image ici comme dans le fichier Register) */}
 
-              <Form.Group as={Col}>
-                <Form.Label>Lastname:</Form.Label>
-                <Form.Control
-                  name="lastname"
-                  defaultValue={lastname}
-                  onChange={handleChange}
-                  type="text"
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Label>Enterprise</Form.Label>
-                <Form.Control
-                  name="enterprise"
-                  value={enterprise}
-                  type="text"
-                  disabled
-                />
-              </Form.Group>
-            </Row>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group mb-3">
+                    <label>Prénom</label>
+                    <input
+                      name="firstname"
+                      value={userData.firstname}
+                      onChange={handleChange}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="form-group mb-3">
+                    <label>Nom</label>
+                    <input
+                      name="lastname"
+                      value={userData.lastname}
+                      onChange={handleChange}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="form-group mb-3">
+                    <label>Entreprise</label>
+                    <input
+                      name="enterprise"
+                      value={userData.enterprise}
+                      onChange={handleChange}
+                      className="form-control"
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group mb-3">
+                    <label>Mot de passe</label>
+                    <div className="input-group">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={userData.password}
+                        onChange={handleChange}
+                        className="form-control"
+                      />
+                      <span
+                        className="input-group-text"
+                        onClick={toggleShowPassword}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {showPassword ? <FiEyeOff /> : <FiEye />}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <Row className="mb-3">
-              <Form.Group as={Col}>
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                  name="email"
-                  defaultValue={email}
-                  onChange={handleChange}
-                  type="email"
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Label>password:</Form.Label>
-                <Form.Control
-                  name="password"
-                  onChange={handleChange}
-                  type="password"
-                />
-              </Form.Group>
-            </Row>
-            <button
-              className="btn btn-dark border border-warning"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
-          </Form>
-          <div>
-            <button
-              onClick={() => swalDelete()}
-              className="btn btn-dark border border-danger mt-2 mb-2"
-            >
-              Delete User
-            </button>
+              <button
+                className="btn btn-outline-warning fw-bold"
+                onClick={handleSubmit}
+              >
+                Mettre à jour
+              </button>
+
+              <button
+                onClick={() => swalDelete()}
+                className="btn btn-outline-danger fw-bold mt-2 mb-2"
+              >
+                Supprimer l'utilisateur
+              </button>
+            </div>
           </div>
-        </Card>
+        </div>
       </div>
       <Footer />
     </div>
