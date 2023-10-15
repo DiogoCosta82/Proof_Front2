@@ -89,7 +89,7 @@ function TableauBord({ critereData }) {
       <div className="colonne-gauche">
         {dossierNumero && (
           <div className="numero-dossier">
-            <h3>
+            <h3 className="header_dossier">
               Dossier : <h5>{dossierNumero}</h5>
             </h3>
           </div>

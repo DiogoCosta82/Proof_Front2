@@ -27,6 +27,7 @@ function Login() {
         sessionStorage.setItem("token", data.token);
         sessionStorage.setItem("user_id", data.user.id);
         sessionStorage.setItem("firstname", data.user.firstname);
+        sessionStorage.setItem("lastname", data.user.lastname);
         sessionStorage.setItem("type_user", data.user.type_user);
         sessionStorage.setItem("enterprise", data.user.enterprise);
 
