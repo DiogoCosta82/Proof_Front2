@@ -1,11 +1,16 @@
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .card_2 {
   background-color: rgb(16 13 13 / 60%);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-top: 15%;
-  width: 80%;
-  margin-left: 10%;
+  width: 60%;
+  margin-top: 18%;
+  margin-left: 20%;
 }
 
 .container2 {
