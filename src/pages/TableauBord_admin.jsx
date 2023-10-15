@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../components/style/tbord.css";
-import critereData from "../models/critereData.json";
+import "../components/style/tbord_admin.css";
 import Header_Admin from "../models/Header_Admin";
 import Footer from "../models/Footer";
+import Critere from "../models/Criteres";
 
-function TableauBord_admin() {
+function TableauBord_admin({ critereData }) {
   const [dossiers, setDossiers] = useState([]);
   const [typeUser, setTypeUser] = useState(null);
+  const [openDossiers, setOpenDossiers] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,6 +35,8 @@ function TableauBord_admin() {
         if (response.ok) {
           const data = await response.json();
           setDossiers(data); // Définir la liste des dossiers
+          // Initialiser l'état des dossiers ouverts à false pour chaque dossier
+          setOpenDossiers(new Array(data.length).fill(false));
         } else {
           console.error("Erreur lors du chargement des dossiers");
         }
@@ -47,6 +50,12 @@ function TableauBord_admin() {
     }
   }, [typeUser]);
 
+  const toggleDossier = (index) => {
+    const newOpenDossiers = [...openDossiers];
+    newOpenDossiers[index] = !newOpenDossiers[index];
+    setOpenDossiers(newOpenDossiers);
+  };
+
   return (
     <div className="tableau-bord">
       {/* Afficher Header si user_Type est "admin", sinon Header2 */}
@@ -54,40 +63,26 @@ function TableauBord_admin() {
 
       {typeUser === "admin" && (
         <div className="colonne-droite">
-          {dossiers.map((dossier) => (
-            <DossierAccordion
-              key={dossier.id}
-              dossier={dossier}
-              critere={critereData}
-            />
-          ))}
-          <div style={{ height: "100px" }}></div>
-        </div>
-      )}
-
-      <Footer />
-    </div>
-  );
-}
-
-function DossierAccordion({ dossier }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="dossier-accordion">
-      <div
-        className={`accordion-header ${open ? "open" : ""}`}
-        onClick={() => setOpen(!open)}
-      >
-        <h3>
-          Enterprise: {dossier.enterprise} - Numéro de Dossier:{" "}
-          {dossier.n_dossier}
-        </h3>
-      </div>
-      {open && (
-        <div className="criteres">
-          {critereData.map((critere, index) => (
-            <div key={index}>{critere}</div>
+          {dossiers.map((dossier, index) => (
+            <div key={index} className="dossier-accordion">
+              <div
+                className={`accordion-header ${
+                  openDossiers[index] ? "open" : ""
+                }`}
+                onClick={() => toggleDossier(index)}
+              >
+                <h3 className="header_dossier">
+                  Enterprise: {dossier.enterprise} - Dossier:{" "}
+                  {dossier.n_dossier}
+                </h3>
+              </div>
+              {openDossiers[index] && (
+                <div className="criteres">
+                  <Critere critereData={critereData} />
+                </div>
+              )}
+              <Footer />
+            </div>
           ))}
         </div>
       )}
