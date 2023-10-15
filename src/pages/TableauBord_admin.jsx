@@ -34,8 +34,7 @@ function TableauBord_admin({ critereData }) {
 
         if (response.ok) {
           const data = await response.json();
-          setDossiers(data); // Définir la liste des dossiers
-          // Initialiser l'état des dossiers ouverts à false pour chaque dossier
+          setDossiers(data);
           setOpenDossiers(new Array(data.length).fill(false));
         } else {
           console.error("Erreur lors du chargement des dossiers");
@@ -46,7 +45,7 @@ function TableauBord_admin({ critereData }) {
     };
 
     if (typeUser === "admin") {
-      loadDossiers(); // Charger les dossiers pour les administrateurs
+      loadDossiers();
     }
   }, [typeUser]);
 
@@ -58,7 +57,6 @@ function TableauBord_admin({ critereData }) {
 
   return (
     <div className="tableau-bord">
-      {/* Afficher Header si user_Type est "admin", sinon Header2 */}
       {typeUser === "admin" ? <Header_Admin /> : null}
 
       {typeUser === "admin" && (
