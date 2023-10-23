@@ -1,3 +1,7 @@
+* {
+  max-width: 120%;
+}
+
 .navbar .dropdown-menu a:hover {
   color: #616161 !important;
 }

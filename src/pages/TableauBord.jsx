@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/style/tbord.css";
 import Critere from "../models/Criteres";
-import Header_Admin from "../models/Header_Admin";
 import Header_User from "../models/Header_User";
 import Footer from "../models/Footer";
 
@@ -13,7 +12,6 @@ function TableauBord({ critereData }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Vérifier si l'utilisateur est connecté
     const token = sessionStorage.getItem("token");
     if (!token) {
       navigate("/login");
@@ -25,8 +23,8 @@ function TableauBord({ critereData }) {
 
     // Vérifier si l'utilisateur a un dossier existant
     const checkDossier = async () => {
-      const userId = sessionStorage.getItem("user_id"); // Récupérer le user_id depuis le sessionStorage
-      const token = sessionStorage.getItem("token"); // Utilisez le token pour l'authentification
+      const userId = sessionStorage.getItem("user_id");
+      const token = sessionStorage.getItem("token");
 
       try {
         const response = await fetch(
@@ -35,17 +33,18 @@ function TableauBord({ critereData }) {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`, // Assurez-vous d'inclure le token d'authentification
+              Authorization: `Bearer ${token}`,
             },
           }
         );
 
         if (response.ok) {
           const data = await response.json();
-          if (data.n_dossier) {
-            setDossierNumero(data.n_dossier);
-            setAccordionsVisible(true); // Afficher les accordions si un dossier existe
-          }
+          const dossierId = data.dossier_id;
+          sessionStorage.setItem("dossier_id", dossierId);
+
+          setDossierNumero(data.n_dossier);
+          setAccordionsVisible(true); // Afficher les accordions si un dossier existe
         } else {
           console.error("Erreur lors de la vérification du dossier");
         }
@@ -72,6 +71,9 @@ function TableauBord({ critereData }) {
       });
 
       if (response.ok) {
+        const dossierId = data.dossier_id;
+        sessionStorage.setItem("dossier_id", dossierId);
+
         setDossierNumero(dossier);
         setAccordionsVisible(true);
       } else {
@@ -84,8 +86,7 @@ function TableauBord({ critereData }) {
 
   return (
     <div className="tableau-bord">
-      {/* Afficher Header si user_Type est "admin", sinon Header2 */}
-      {typeUser === "admin" ? <Header_Admin /> : <Header_User />}
+      {typeUser === "user" ? <Header_User /> : null}
       <div className="colonne-gauche">
         {dossierNumero && (
           <div className="numero-dossier">

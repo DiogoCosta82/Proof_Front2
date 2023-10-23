@@ -32,7 +32,7 @@ const Home = () => {
           </div>
           <br />
           <div className="d-flex flex-row align-items-center">
-            <p style={{ fontSize: "20px", margin: "0", marginRight: "10px" }}>
+            <p style={{ fontSize: "20px", margin: "0px", marginRight: "10px" }}>
               Commencer
             </p>
             <a href="/login">
