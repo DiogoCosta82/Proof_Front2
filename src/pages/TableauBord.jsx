@@ -43,8 +43,10 @@ function TableauBord({ critereData }) {
           const dossierId = data.dossier_id;
           sessionStorage.setItem("dossier_id", dossierId);
 
-          setDossierNumero(data.n_dossier);
-          setAccordionsVisible(true); // Afficher les accordions si un dossier existe
+          if (data.n_dossier) {
+            setDossierNumero(data.n_dossier);
+            setAccordionsVisible(true); // Afficher les accordions si un dossier existe
+          }
         } else {
           console.error("Erreur lors de la vérification du dossier");
         }
@@ -71,7 +73,7 @@ function TableauBord({ critereData }) {
       });
 
       if (response.ok) {
-        const dossierId = data.dossier_id;
+        const dossierId = response.dossier_id;
         sessionStorage.setItem("dossier_id", dossierId);
 
         setDossierNumero(dossier);
